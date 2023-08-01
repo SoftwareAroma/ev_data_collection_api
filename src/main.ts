@@ -2,10 +2,10 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ConfigService } from '@nestjs/config';
-import * as cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app: NestExpressApplication =
@@ -20,9 +20,6 @@ async function bootstrap() {
   // api version
   const apiVersion: string = configService.get<string>('API_VERSION');
   const swaggerPath = 'swagger';
-
-  // TO WORK WITH COOKIES FOR AUTHENTICATION
-  app.use(cookieParser());
 
   /// enable CORS (ALLOW REQUEST FROM ALL POINTS IN TIME)
   app.enableCors({
