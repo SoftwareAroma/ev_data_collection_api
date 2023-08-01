@@ -11,7 +11,7 @@ async function bootstrap() {
     await NestFactory.create<NestExpressApplication>(AppModule, {
       logger: ['error', 'warn', 'debug', 'verbose'], // 'log' // remove log to disable logging
     });
-  app.setGlobalPrefix('api');
+  // app.setGlobalPrefix('api');
   // app config service
   const configService = app.get(ConfigService);
   app.enableShutdownHooks();
@@ -65,7 +65,7 @@ async function bootstrap() {
     .listen(port)
     .then((): void => {
       /// USEFUL LINKS TO THE VARIOUS ENDPOINTS.
-      console.log(`Front end running on port http://localhost:${port}/api`);
+      console.log(`Front end running on port http://localhost:${port}`);
       console.log(
         `Swagger running on port http://localhost:${port}/${swaggerPath}`,
       ); // THE SWAGGER PAGE ROUTE
