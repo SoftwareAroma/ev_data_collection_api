@@ -11,10 +11,11 @@ datasource db {
 }
 
 model Location {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @unique @default(uuid())
   name      String?
-  latitude  Float
-  longitude Float
+  position  Json[]
+  distance  String?
+  duration  String?
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt()
 }
